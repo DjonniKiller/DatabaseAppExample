@@ -1,0 +1,50 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:14.1-alpine
+        container_name: postgres
+        restart: always
+        environment:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: zhekina
+        networks: 
+          - zheka_network
+        ports:
+          - 6432:5432
+
+    pgadmin: 
+        container_name: pgadmin
+        image: dpage/pgadmin4:6.13
+        restart: always
+        ports:
+            - 9000:80
+        depends_on:
+            - postgres
+        networks: 
+            - zheka_network
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=admin@admin.ru
+            - PGADMIN_DEFAULT_PASSWORD=123456
+    backend:
+        container_name: backend
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        depends_on:
+            - postgres
+        volumes:
+            - ./backend:/usr/src/backend
+        networks:
+            - zheka_network
+        ports:
+            - 10001:8080
+        environment:
+            DATABASE_HOST: postgres
+            DATABASE_PORT: 5432
+            DATABASE_NAME: zhekina
+    
+                
+networks:
+    zheka_network:
+        external: False
