@@ -5,7 +5,7 @@ module.exports.addUser = async (req, res) => {
     try{
         const { login } = req.body;
 
-        if (!login) throw 'Cannot get login!';
+        if (!login) throw 'Ошибка получения логина!';
 
         await mainConnection('users').insert({login: login});
         res.status(200).send('Added');
