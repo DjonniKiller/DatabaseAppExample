@@ -9,5 +9,5 @@ app.use('/api', apiRoutes);
 
 app.listen(PORT, () => {
     console.log(process.env.DATABASE_HOST)
-    console.log('Приложение запустилось!')
+    console.log('Приложение запустилось')
 });
