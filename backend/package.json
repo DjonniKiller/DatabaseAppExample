@@ -4,13 +4,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate": "knex migrate:latest --env mainConnection"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "knex": "^2.3.0",
+    "node-pack": "^0.1.3",
     "pg": "^8.8.0"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@ const knex = require('knex');
 
 module.exports.addUser = async (req, res) => {
     try{
+        console.log(req.body);
         const { login } = req.body;
 
         if (!login) throw 'Ошибка получения логина!';
