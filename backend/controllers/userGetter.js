@@ -1,5 +1,4 @@
-const e = require("express");
-const userRepo = require('../repositories/users.repo')
+const userRepo = require('../repositories/users.repo.js')
 
 const Users = [{
     id: 1,
@@ -14,7 +13,7 @@ const Users = [{
 
 module.exports.getUserByID = (req, res) => {
     try{
-        const { id } = req.query;
+        const id = req.params.id;
         
         if (!id) throw 'not found id';
 

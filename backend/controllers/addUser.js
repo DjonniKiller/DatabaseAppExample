@@ -1,5 +1,4 @@
-const { mainConnection } = require('../connection');
-const knex = require('knex');
+const { mainConnection } = require('../connection.js');
 
 module.exports.addUser = async (req, res) => {
     try{

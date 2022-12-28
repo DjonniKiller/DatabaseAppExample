@@ -3,7 +3,7 @@ const pack = require('node-pack');
 const bp = require('body-parser');
 const app = express();
 const PORT = 8080;
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/api/api.js');
 
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
